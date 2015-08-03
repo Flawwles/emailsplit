@@ -8,7 +8,6 @@
   },
   "dependencies": {
   	"cheerio": "latest",
-  	"fs": "latest",
-  	"phantomjs": "latest",
+  	"fs": "latest"
   }
 }
