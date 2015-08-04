@@ -1,17 +1,52 @@
 var cheerio = require('cheerio'),
-    fs = require('fs');
+    fs = require('fs'),
+    glob = require("glob"),
+    phantom = require("phantom"),
+    webPage = require('webpage');
 
-fs.readFile('live.html', 'utf8', dataLoaded);
+var RenderUrlsToFile, arrayOfUrls, system;
+fs.readFile('live.html', 'utf8', htmlToSplit);
 
-function dataLoaded(err, data) {
+function htmlToSplit(err, data) {
     $ = cheerio.load(' ' + data + ' ');
     $('.backgroundTable').each(function(i, elem) {
-        var id = $(elem).attr('class'),
-            filename = "./export/blocks/" + id + i + '.html',
+        var fileNumber = i + 1, // Start saving from 1 rather than 0
+            fileName = "./export/blocks/block-" + fileNumber +
+            '.html',
             content = $.html(elem);
-        fs.writeFile(filename, content, function(err) {
-            console.log('Written html to ' + filename);
+        // Save files
+        fs.writeFile(fileName, content, function(err) {
+            console.log('Written html to ' + fileName);
         });
     });
 }
+// Count files
+glob("./export/blocks/*.html", {}, function(er, files) {
+    console.log(files.length)
+});
+//Phantom
+//Get files name
+getFilename = function() {
+    return "image-" + ".png";
+};// Add numbers later
+
+
+
+phantom.create(function(ph) {
+    ph.createPage(function(page) {
+        page.open("./export/blocks/block-1.html", function(
+            status) {
+            // Load the file to have it's picture taken
+            var file = "./export/images/test.jpg";
+            //Set viewport size
+            page.viewportSize = { width: 1920, height: 1080 };
+            page.render('./export/images/block-1.jpg',{
+                format: 'jpeg', quality: '100',
+            });
+            ph.exit();
+
+        });
+    });
+});
+
 
