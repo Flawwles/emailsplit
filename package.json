@@ -10,6 +10,7 @@
     "cheerio": "latest",
     "glob": "^5.0.14",
     "phantom": "^0.7.2",
+    "system": "^1.0.4",
     "webpage": "^0.3.0"
   }
 }
