@@ -8,7 +8,7 @@
   var fileName = args.splice(0, 1)[0] || '';
   var className = '.'.concat(args.splice(0, 1)[0] || '');
 
-  if (!fileName) {
+  if (!fileName || className === '.') {
     console.log('\n  Usage: emailsplit <fileName> <className>\n');
   } else {
     var splitter = require('./src/splitter');
