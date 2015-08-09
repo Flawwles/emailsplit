@@ -3,6 +3,8 @@
 (function () {
   'use strict';
 
+  var exec = require('child_process').exec;
+
   var args = [].concat(process.argv);
   var program = args.splice(0, 1)[0];
   var directory = args.splice(0, 1)[0];
@@ -20,6 +22,8 @@
     clean.do('./export/images/*.png');
     splitter.do(fileName, className, function() {});
     renderer.do();
+
+    exec('open export');
   }
 
 })();
