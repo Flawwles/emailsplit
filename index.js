@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 (function () {
+  'use strict';
 
   var args = [].concat(process.argv);
   var program = args.splice(0, 1)[0];
