@@ -19,9 +19,9 @@
       var $ = cheerio.load(content);
 
       $(className).each(function(index, el) {
-        var fileSeq = index++;
-        console.log(index++, fileSeq)
-        var fileName = './export/blocks/block-' + fileSeq + '.html';
+        //var fileSeq = index+1;
+       // console.log("index = " + index++)
+        var fileName = './export/blocks/block-' + index++ + '.html';
         var content = $.html(el);
 
         self.saveToFile(fileName, content, function(/*err*/) {
