@@ -20,6 +20,7 @@
 
       $(className).each(function(index, el) {
         var fileSeq = index++;
+        console.log(index++, fileSeq)
         var fileName = './export/blocks/block-' + fileSeq + '.html';
         var content = $.html(el);
 

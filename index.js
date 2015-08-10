@@ -2,7 +2,7 @@
 
 (function () {
   'use strict';
-
+  //  https://nodejs.org/api/child_process.html
   var exec = require('child_process').exec;
 
   var args = [].concat(process.argv);
@@ -23,7 +23,6 @@
     splitter.do(fileName, className, function() {});
     renderer.do();
 
-    exec('open export');
+    exec('open ./export');
   }
-
 })();
