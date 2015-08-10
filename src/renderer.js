@@ -11,7 +11,6 @@
       glob("./export/blocks/*.html", {}, function(er, files) {
         (function myLoop(i) {
           setTimeout(function() {
-            //
             phantom.create(function(ph) {
               ph.createPage(function(page) {
                 page.open("./export/blocks/block-" + i + ".html", function(status) {
@@ -28,10 +27,9 @@
                 });
               });
             });
-            //
-            if (--i) myLoop(i); //  decrement i and call myLoop again if i > 0
+            if (--i) myLoop(i);
           }, 1000)
-        })(files.length); //  pass the number of iterations as an argument
+        })(files.length);
       });
     }
   };

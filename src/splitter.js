@@ -15,12 +15,9 @@
 
     split: function(content, className/*, callback*/) {
       var self = this;
-      //console.log(content, callback);
       var $ = cheerio.load(content);
 
       $(className).each(function(index, el) {
-        //var fileSeq = index+1;
-       // console.log("index = " + index++)
         var fileName = './export/blocks/block-' + index++ + '.html';
         var content = $.html(el);
 
@@ -29,7 +26,7 @@
         });
       });
     },
-  //
+
     saveToFile: function(dest, content, callback) {
       fs.writeFile(dest, content, callback);
     }
