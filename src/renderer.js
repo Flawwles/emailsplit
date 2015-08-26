@@ -7,27 +7,24 @@
 
   module.exports = {
     do : function() {
-      console.log("Runing")
       glob("./export/blocks/*.html", {}, function(er, files) {
-        (function myLoop(i) {
+        (function rednerLoop(i) {
           setTimeout(function() {
             phantom.create(function(ph) {
               ph.createPage(function(page) {
-                page.open("./export/blocks/block-" + i + ".html", function(status) {
-                  page.viewportSize = {
-                    width: 480,
-                    height: 800
-                  };
-                  page.render("./export/images/block-" + i + ".png", {
+                var fileNumber = i + 1;
+                page.open("./export/blocks/block-" + fileNumber + ".html", function(status) {
+                  page.set('viewportSize', { width: 1000, height: 100 });
+                  page.render("./export/images/image-" + fileNumber + ".png", {
                     format: 'png',
                     quality: '100'
                   });
-                  console.log("File saved as block-" + i)
+                  console.log("File saved as image-" + fileNumber)
                   ph.exit();
                 });
               });
             });
-            if (--i) myLoop(i);
+            if (--i) rednerLoop(i);
           }, 1000)
         })(files.length);
       });
