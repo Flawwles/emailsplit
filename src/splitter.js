@@ -30,6 +30,6 @@
 
     saveToFile: function(dest, content, callback) {
       fs.writeFile(dest, content, callback);
-    }
+}
   };
 })();
