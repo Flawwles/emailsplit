@@ -14,7 +14,7 @@
               ph.createPage(function(page) {
                 var fileNumber = i + 1;
                 page.open("./export/blocks/block-" + fileNumber + ".html", function(status) {
-                  page.set('viewportSize', { width: 1000, height: 20 });
+                  page.set('viewportSize', { width: 600, height: 20 });
                   page.render("./export/images/image-" + fileNumber + ".png", {
                     format: 'png',
                     quality: '100'
