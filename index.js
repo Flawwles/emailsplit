@@ -14,7 +14,7 @@
   if (!fileName || className === '.') {
     console.log('\n  Usage: emailsplit <fileName> <className>\n');
   } else {
-    var validate =  require('./src/validate');
+    //var validate =  require('./src/validate');
     var clean = require('./src/clean');
     var splitter = require('./src/splitter');
     var renderer = require('./src/renderer');
