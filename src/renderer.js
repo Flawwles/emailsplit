@@ -5,12 +5,14 @@
     glob = require('glob'),
     phantom = require("phantom");
 
+
   module.exports = {
     do : function() {
+      console.log("Loading PhantomJS || Please wait || ...      ");
       glob("./export/blocks/*.html", {}, function(er, files) {
-        (function rednerLoop(i) {
-          setTimeout(function() {
-            phantom.create().then(function(ph) {
+         var pace = require('pace')(files.length);
+         files.forEach(function(file, i){
+          phantom.create().then(function(ph) {
               ph.createPage().then(function(page) {
                 var fileNumber = i + 1;
                 page.open("./export/blocks/block-" + fileNumber + ".html").then(function(status) {
@@ -19,14 +21,14 @@
                     format: 'png',
                     quality: '100'
                   });
-                  console.log("File saved as image-" + fileNumber)
+                  // process.stdout.write("Capturing file " + file + "\r");
+                  // console.log("file", files.length)
+                  pace.op();
                   ph.exit();
                 });
               });
             });
-            if (--i) rednerLoop(i);
-          }, 1000)
-        })(files.length);
+        });
       });
     }
   };

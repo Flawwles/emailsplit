@@ -10,7 +10,7 @@ module.exports = {
       files.forEach(function(file){
         fs.unlink(file, function(err){
           if(err) throw err;
-          console.log('Deleted file ' + file);
+          process.stdout.write('Deleting ' + file + '\r');
         });
       });
     });

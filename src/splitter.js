@@ -18,7 +18,7 @@
         var fileName = './export/blocks/block-' + indexPlus + '.html';
         var content = $.html(el);
         self.saveToFile(fileName, content, function( /*err*/ ) {
-          console.log('Written html to ' + fileName);
+          process.stdout.write('Written html to ' + fileName + '\r');
         });
       });
     },
