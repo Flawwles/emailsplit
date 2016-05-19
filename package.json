@@ -10,7 +10,7 @@
     "async": "^1.4.2",
     "cheerio": "latest",
     "glob": "^5.0.14",
-    "phantom": "^0.7.2"
+    "phantom": "latest"
   },
   "main": "index.js",
   "bin": {
