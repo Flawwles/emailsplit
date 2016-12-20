@@ -4,7 +4,7 @@ will take each table and all the HTML within and create a new HTML file for each
 Every block will then be processed to have a screenshot taken, making it easier to
 add to a template sorter.
 
-
+![emailsplit](http://matt-evans.co.uk/wp-content/uploads/2016/12/emailsplit.gif)
 
 ## Development
 
