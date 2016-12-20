@@ -18,26 +18,31 @@
     var clean = require('./src/clean');
     var splitter = require('./src/splitter');
     var renderer = require('./src/renderer');
+    var validate = require('./src/validate');
 
     // validate.do(fileName, className);
 
     async.series([
+
+      function(callback) {
+       validate.checkFile(fileName);
+       validate.checkClass(fileName, className);
+       callback(null, 1);
+      },
       function(callback) {
         clean.do('./export/blocks/*.html');
         clean.do('./export/images/*.png');
-        callback(null, 1);
+        callback(null, 2);
       },
       function(callback) {
         splitter.do(fileName, className, function() {});
-        callback(null, 2);
+        callback(null, 3);
       },
       function(callback) {
         setTimeout(function() { renderer.do(); }, 200);
         //Add delay to stop phantomJS from running too early
-        callback(null, 3);
+        callback(null, 4);
       }
     ]);
   }
 })();
-
-
