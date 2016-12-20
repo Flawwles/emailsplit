@@ -1,5 +1,8 @@
 # emailsplit
-Take a full email template split and screenshot it
+Input a HTML email that has multiple tables holding smaller sections - The script
+will take each table and all the HTML within and create a new HTML file for each block.
+Every block will then be processed to have a screenshot taken, making it easier to
+add to a template sorter.
 
 
 
@@ -7,7 +10,7 @@ Take a full email template split and screenshot it
 
 1. Run `npm install` to install dependencies
 
-2. You need PhantomJS installed `npm install -g phantomjs`
+2. You need PhantomJS installed `npm install -g phantomjs` || Currently working with PhantomJS 2.1.1
 
 3. Run `npm link` to add `emailsplit` as a global command
 
@@ -20,4 +23,3 @@ Take a full email template split and screenshot it
 
 3. A new folder called export will be created containing the HTML and PNG files
 with the contents of each element with the class inputted
-
