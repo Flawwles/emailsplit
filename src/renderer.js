@@ -24,12 +24,13 @@
                   // process.stdout.write("Capturing file " + file + "\r");
                   // console.log("file", files.length)
                   pace.op();
-                  ph.exit();
+                  page.close();
+                  ph.exit(callback);
                 });
               });
             });
         });
       });
     }
-  };
+  }
 })();
