@@ -7,6 +7,7 @@
   var express	=	require("express");
   var multer	=	require('multer');
   var mime	=	require('mime');
+  var jade	=	require('jade');
   var errors = false;
   var args = [].concat(process.argv);
   var program = args.splice(0, 1)[0];
@@ -27,11 +28,28 @@
   });
   var upload = multer({ storage : storage}).single('userHTML');
 
-  app.get('/',function(req,res){
-        res.sendFile(__dirname + "/public/html/index.html");
+  // app.get('/',function(req,res){
+  //       res.sendFile(__dirname + "/public/html/index.html");
+  // });
+
+  // app.set('views', path.join(__dirname, 'views'));
+  app.set('view engine', 'jade');
+
+  app.get('/', function(req,res){
+    res.render('index', {
+        status: 'waiting for file'
+      });
+
+      
   });
 
+
+
+  app.use(express.static(__dirname + '/public'));
+
   app.post('/api/upload',function(req, res){
+
+
   	upload(req,res,function(err) {
   		if(err) {
   			return res.end("Error uploading file");
@@ -52,38 +70,15 @@
 
         renderer.do(function () {
           console.log('finished');
+          // res.end("File is uploaded");
+          // res.download('import/userHTML-1487693187873.html');
+          app.get('/', function(req,res){
+            res.send('index', {
+                status: 'All done'
+              });
+          });
         });
 
-        // async.series([
-        //   function(callback) {
-        //    validate.checkFile(fileName);
-        //    validate.checkClass(fileName, className);
-        //    console.log("1");
-        //    callback();
-        //
-        //   },
-        //   function(callback) {
-        //     clean.do('./export/blocks/*.html');
-        //     clean.do('./export/images/*.png');
-        //     console.log("2");
-        //     callback();
-        //   },
-        //   function(callback) {
-        //     splitter.do(fileName, className, function() {});
-        //     console.log("3");
-        //     callback();
-        //   },
-        //   // function(callback) {
-        //   //   setTimeout(function() {
-        //   //      renderer.do();
-        //   //
-        //   //   }, 200);  //Add delay to stop phantomJS from running too early
-        //   //
-        //   // },
-        // ], function(err, results) {
-        //   console.log('err', err);
-        //   console.log('results', results);
-        // });
 
 
   	});

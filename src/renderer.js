@@ -35,7 +35,7 @@
         Promise.all(promises).then(function (results) {
           console.log('results', results);
           callback();
-        })
+        });
       });
     }
 

@@ -1,0 +1,112 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+
+h1 {
+text-align: center;
+color: #fff;
+font-weight: 100;
+color: #f35626;
+background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+-webkit-animation: hue 60s infinite linear;
+font-size: 5rem;
+}
+
+@-webkit-keyframes hue {
+from {
+-webkit-filter: hue-rotate(0deg);
+}
+
+to {
+-webkit-filter: hue-rotate(-360deg);
+}
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#dropzone{
+position: absolute; /* Needed to set height */
+display: table;
+table-layout: fixed; /* Needed to set width without absolute */
+width: 100%;
+height: 100%;
+/*background: #EC6F66;
+background: -webkit-linear-gradient(to left, #EC6F66 , #F3A183);
+background: linear-gradient(to left, #EC6F66 , #F3A183);*/
+}
+
+.dropzone-container {
+display: table-cell; /* Needed to apply vertical-align */
+vertical-align: middle;
+}
+
+.dropzone-content {
+margin: 0 auto; /* So center our content */
+width: 100%;
+max-width: 600px;
+background: #fff;
+padding: 24px;
+border-radius: 10px;
+box-sizing: border-box;
+box-shadow: 0px 6px 9px 0px rgba(158, 158, 158, 0.32);
+border: 1px solid #f5f5f5
+}
+
+img {
+width: 100%;
+}
+
+.img-upload {
+width: 220px;
+display: block;
+margin: 0 auto;
+padding-top: 31px;
+}
+
+
+.dropzone { border: 2px dashed #efefef; border-radius: 10px; }
+.dropzone .dz-message { font-weight: 400; }
+.dropzone .dz-message .note { font-size: 0.8em; font-weight: 200; display: block; margin-top: 1.4rem; }
+
+.dropzone.dz-drag-hover .dz-message {
+opacity: 1;
+}
+
+.dropzone.dz-drag-hover {
+border-color: #ffa2a2;
+}
+.dropzone.dz-drag-hover .img-upload {
+-webkit-animation: bounce 3s infinite;
+}
+
+@-webkit-keyframes bounce {
+0% {
+transform: translateY(0);
+}
+
+50% {
+transform: translateY(30px);
+}
+
+100% {
+transform: translateY(0);
+}
+
+}
+
+.btn_restart {
+display: block;
+margin: 0 auto;
+width: 200px;
+text-align: center;
+margin-top: 20px;
+}

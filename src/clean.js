@@ -6,12 +6,14 @@ var fs = require('fs'),
 
 module.exports = {
   do : function(path, callback) {
-    glob(path, {}, function(er, files) {
-      files.forEach(function(file){
-        console.log('delete', file);
-        fs.unlinkSync(file);
-      });
+
+    var files = glob.sync(path);
+
+    files.forEach(function(file){
+      console.log('delete', file);
+      fs.unlinkSync(file);
     });
+
   }
 };
 })();
