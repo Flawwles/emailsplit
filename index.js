@@ -15,8 +15,6 @@
   var className = '.backgroundTable';
 
 
-
-
   var app	=	express();
 
   var storage	=	multer.diskStorage({
@@ -45,34 +43,47 @@
         res.write("File is uploaded");
         fileName = req.file.path;
 
+        clean.do('./export/images/*.png');
+        clean.do('./export/blocks/*.html');
 
+        validate.checkFile(fileName);
+        validate.checkClass(fileName, className);
+        splitter.do(fileName, className);
 
-        async.series([
-          function(callback) {
-           validate.checkFile(fileName);
-           validate.checkClass(fileName, className);
-           callback();
-          },
-          function(callback) {
-            clean.do('./export/blocks/*.html');
-            clean.do('./export/images/*.png');
-            callback();
-          },
-          function(callback) {
-            splitter.do(fileName, className, function() {});
-            callback();
-          },
-          function(callback) {
-            setTimeout(function() {
-              renderer.do();
+        renderer.do(function () {
+          console.log('finished');
+        });
 
-            }, 200);  //Add delay to stop phantomJS from running too early
-          },
-          function(callback) {
-            console.log("EXPORT FILE");
-            callback();
-          }
-        ]);
+        // async.series([
+        //   function(callback) {
+        //    validate.checkFile(fileName);
+        //    validate.checkClass(fileName, className);
+        //    console.log("1");
+        //    callback();
+        //
+        //   },
+        //   function(callback) {
+        //     clean.do('./export/blocks/*.html');
+        //     clean.do('./export/images/*.png');
+        //     console.log("2");
+        //     callback();
+        //   },
+        //   function(callback) {
+        //     splitter.do(fileName, className, function() {});
+        //     console.log("3");
+        //     callback();
+        //   },
+        //   // function(callback) {
+        //   //   setTimeout(function() {
+        //   //      renderer.do();
+        //   //
+        //   //   }, 200);  //Add delay to stop phantomJS from running too early
+        //   //
+        //   // },
+        // ], function(err, results) {
+        //   console.log('err', err);
+        //   console.log('results', results);
+        // });
 
 
   	});

@@ -3,12 +3,9 @@
   var fs = require('fs');
   var cheerio = require('cheerio');
   module.exports = {
-    do : function(fileName, className, callback) {
-      fs.readFile(fileName, function(err, content) {
-        if (!err) {
-          return this.split(content, className, callback);
-        }
-      }.bind(this));
+    do : function(fileName, className) {
+      var content = fs.readFileSync(fileName);
+      this.split(content, className);
     },
     split: function(content, className /*, callback*/ ) {
       var self = this;
@@ -17,13 +14,11 @@
         var indexPlus = index + 1;
         var fileName = './export/blocks/block-' + indexPlus + '.html';
         var content = $.html(el);
-        self.saveToFile(fileName, content, function( /*err*/ ) {
-          process.stdout.write('Written html to ' + fileName + '\r');
-        });
+        self.saveToFile(fileName, content);
       });
     },
-    saveToFile: function(dest, content, callback) {
-      fs.writeFile(dest, content, callback);
+    saveToFile: function(dest, content) {
+      fs.writeFileSync(dest, content);
     }
   }
 })();

@@ -8,10 +8,8 @@ module.exports = {
   do : function(path, callback) {
     glob(path, {}, function(er, files) {
       files.forEach(function(file){
-        fs.unlink(file, function(err){
-          if(err) throw err;
-          process.stdout.write('Deleting ' + file + '\r');
-        });
+        console.log('delete', file);
+        fs.unlinkSync(file);
       });
     });
   }
