@@ -5,7 +5,6 @@
     glob = require('glob'),
     phantom = require("phantom");
 
-
   module.exports = {
     do : function(callback) {
       console.log("Loading PhantomJS || Please wait || ...      ");
@@ -21,7 +20,6 @@
                   format: 'png',
                   quality: '100'
                 });
-
                 // pace.op();
                 page.close();
                 ph.exit();

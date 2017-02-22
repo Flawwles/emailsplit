@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="66px" viewBox="0 0 50 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 2.000000)">
+            <g id="@2xstroke-567-stroke-568-copy" transform="translate(23.000000, 31.000000) scale(-1, 1) rotate(-180.000000) translate(-23.000000, -31.000000) " stroke-width="3.5" stroke="#FF5A99">
+                <g id="@2xStroke-567-+-Stroke-568" transform="translate(-0.000000, 0.000000)">
+                    <g id="Page-1" transform="translate(-0.000000, 0.000000)">
+                        <g id="Stroke-567-+-Stroke-568" transform="translate(-0.000000, 0.000000)">
+                            <polygon id="Stroke-567" points="32 61.615458 -1.17192459e-13 61.615458 -1.17192459e-13 0.384541985 46 0.384541985 46 42.9799618"></polygon>
+                            <polyline id="Stroke-568" points="32 61.615458 32 42.9799618 46 42.9799618"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <rect id="Rectangle-2-Copy" stroke="#FF5A99" stroke-width="1.5" fill="#FF5A99" x="0" y="30" width="46" height="18"></rect>
+            <text id="&lt;/!&gt;" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="16" font-weight="normal" fill="#FFFFFF">
+                <tspan x="8" y="44">&lt;/!&gt;</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
