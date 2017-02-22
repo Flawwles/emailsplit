@@ -32,7 +32,8 @@
 
         Promise.all(promises).then(function (results) {
           console.log('results', results);
-          callback();
+          setTimeout(function(){ callback(); }, 3000);
+
         });
       });
     }

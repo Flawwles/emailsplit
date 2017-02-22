@@ -41,19 +41,26 @@
 			var zip = require('./src/zip');
 			var fileName = req.file.path;
 			var fileNameShort = req.file.originalname;
+      clean.do('./download/*.zip');
 			clean.do('./export/images/*.png');
 			clean.do('./export/blocks/*.html');
 			validate.checkFile(fileName);
 			validate.checkClass(fileName, className);
 			splitter.do(fileName, className);
 			renderer.do(function() {
-      zip.zipFile('./export', './download/' + fileNameShort + '.zip');
+        var uploadStatus = {
+          message: '',
+          uploadID: ''
+        }
+        uploadStatus.message = fileNameShort;
+        uploadStatus.uploadID = Date.now() / 1000 | 0;
 
-
-
-      app.get('/api/download', function(req, res) {
-        res.download('./download/' + fileNameShort + '.zip');
-      });
+        res.send(uploadStatus);
+        zip.zipFile('./export', './download/' + fileNameShort + '.zip');
+        app.use('/api/download/'+ uploadStatus.uploadID, function(req, res) {
+          res.download('./download/' + fileNameShort + '.zip');
+          clean.do('./import/*.html');
+        });
 
 				res.end("File ready to download");
 				console.log('finished');
