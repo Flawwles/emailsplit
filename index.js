@@ -11,6 +11,7 @@
 	var errors = false;
 	var className = '.backgroundTable';
 	var app = express();
+
 	var storage = multer.diskStorage({
 		destination: function(req, file, callback) {
 			callback(null, './import');
@@ -23,11 +24,26 @@
 		storage: storage
 	}).single('userHTML');
 	app.set('view engine', 'jade');
+	//Index
 	app.get('/', function(req, res) {
 		res.render('index', {
 			status: 'waiting for file'
 		});
 	});
+//Stats
+	app.get('/stats', function(req, res) {
+		res.render('stats', {
+			status: 'waiting for file'
+		});
+	});
+	//About
+		app.get('/about', function(req, res) {
+			res.render('stats', {
+				status: 'waiting for file'
+			});
+		});
+
+
 	app.use(express.static(__dirname + '/public'));
 	app.post('/api/upload', function(req, res) {
 		upload(req, res, function(err) {

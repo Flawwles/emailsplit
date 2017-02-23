@@ -1,7 +1,4 @@
 $(document).ready(function() {
-	$(".btn_restart ").click(function() {
-		location.reload();
-	});
 	Dropzone.autoDiscover = false;
 	$(".dropzone").dropzone({
 		url: "/api/upload",
@@ -12,6 +9,8 @@ $(document).ready(function() {
 		success: function(file, response) {
 			// var imgName = response;
       $(".small").empty().text(response);
+			$('.download-ready').addClass('complete');
+			setTimeout(function(){$('.download-ready').removeClass('complete'); }, 4000);
 			console.log('response', response);
 			console.log('file', file);
 			var downloadID = '/api/download/' + response.uploadID;

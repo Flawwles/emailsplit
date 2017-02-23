@@ -4,12 +4,14 @@ html
     link(href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css', rel='stylesheet')
     link(href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/basic.min.css', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Roboto:100,400,900', rel='stylesheet')
+    link(href='/css/normalize.css', rel='stylesheet')
+    link(href='/css/skeleton.css', rel='stylesheet')
     link(href='/css/main.css', rel='stylesheet')
   body
     main
+      include snippet/header.jade
       div#dropzone
         div.dropzone-container
-          h1 Email split
           div.dropzone-content
             form(action="/api/upload", method="post", class="dropzone")
               div.dz-message Drop HTML emails here to start
@@ -20,9 +22,12 @@ html
                 span.note
                   Please only drag HTML emails that have the class of
                     code .backgroundTable
+              div.download-ready
+                span.icon-download
+                span File downloading
           p.status status:
             span.small  !{status}
-
+      include snippet/footer.jade
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js")

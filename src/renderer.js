@@ -31,7 +31,8 @@
         console.log('promises', promises);
 
         Promise.all(promises).then(function (results) {
-          console.log('results', results);
+          // console.log('results', results);
+          console.log("blocks: ", results.length)
           setTimeout(function(){ callback(); }, 3000);
 
         });
