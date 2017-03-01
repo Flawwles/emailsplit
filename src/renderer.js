@@ -3,7 +3,11 @@
 
   var fs = require('fs'),
     glob = require('glob'),
-    phantom = require("phantom");
+    phantom = require("phantom"),
+    getJSON = require('./getJSON'),
+    logFile = {};
+
+
 
   module.exports = {
     do : function(callback) {
@@ -32,7 +36,10 @@
 
         Promise.all(promises).then(function (results) {
           // console.log('results', results);
-          console.log("blocks: ", results.length)
+          console.log("blocks: ", results.length);
+          logFile = getJSON.get();
+          logFile.data.push(results.length)
+          getJSON.set(logFile);
           setTimeout(function(){ callback(); }, 3000);
 
         });

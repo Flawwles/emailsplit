@@ -12,6 +12,7 @@
 	var className = '.backgroundTable';
 	var app = express();
 
+
 	var storage = multer.diskStorage({
 		destination: function(req, file, callback) {
 			callback(null, './import');
@@ -30,7 +31,7 @@
 			status: 'waiting for file'
 		});
 	});
-//Stats
+ //Stats
 	app.get('/stats', function(req, res) {
 		res.render('stats', {
 			status: 'waiting for file'
@@ -42,9 +43,17 @@
 				status: 'waiting for file'
 			});
 		});
+		///PUT THE JSON LOG AS AN ENDPOINT WHEN I GET TIME
+		// app.get('/log', function(req, res) {
+		// 	// res.sendFile(path.normalize(__dirname + '/foo.json'))
+		// 	res.render('stats', {
+		// 		status: 'waiting for file'
+		// 	});
+		// });
 
 
 	app.use(express.static(__dirname + '/public'));
+
 	app.post('/api/upload', function(req, res) {
 		upload(req, res, function(err) {
 			if (err) {

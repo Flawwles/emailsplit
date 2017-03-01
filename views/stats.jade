@@ -6,13 +6,22 @@ html
     link(href='/css/skeleton.css', rel='stylesheet')
     link(href='/css/main.css', rel='stylesheet')
   body
+    include snippet/header.jade
     main
-      include snippet/header.jade
-      div#dropzone
+      div.container
+        div.row
         div.dropzone-container
           div.dropzone-content
             div#stats-blocks.u-full-width
-      include snippet/footer.jade
+        br
+        div.row
+          div.six.columns.dropzone-content.stat
+            h6 Average blocks:
+            span#avg-number.stat-data 00
+          div.six.columns.dropzone-content.stat
+            h6 Script has run:
+            span#run-number.stat-data 00
+    include snippet/footer.jade
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
     script(src="http://code.highcharts.com/highcharts.js")
     script(src="js/stats/blocks.js")

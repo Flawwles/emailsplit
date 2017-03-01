@@ -38,7 +38,7 @@ h2 {
 
 
 .dropzone-content {
-margin: 0 auto; /* So center our content */
+
 width: 100%;
 max-width: 600px;
 background: #fff;
@@ -232,4 +232,23 @@ margin-top: 20px;
   margin-right: 35px;
   text-decoration: none;
   color: #999;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-data {
+    font-size: 90px;
+    line-height: 80px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.stat-data.loaded {
+  opacity: 1;
 }

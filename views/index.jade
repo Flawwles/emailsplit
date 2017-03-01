@@ -8,26 +8,27 @@ html
     link(href='/css/skeleton.css', rel='stylesheet')
     link(href='/css/main.css', rel='stylesheet')
   body
+    include snippet/header.jade
     main
-      include snippet/header.jade
       div#dropzone
-        div.dropzone-container
-          div.dropzone-content
-            form(action="/api/upload", method="post", class="dropzone")
-              div.dz-message Drop HTML emails here to start
-                span.extra  (or click here)
-              div.upload-image
-                img(src="img/upload.svg", class="img-upload")
-              div.dz-message
-                span.note
-                  Please only drag HTML emails that have the class of
-                    code .backgroundTable
-              div.download-ready
-                span.icon-download
-                span File downloading
+        div.container
+          div.row
+            div.dropzone-content
+              form(action="/api/upload", method="post", class="dropzone")
+                div.dz-message Drop HTML emails here to start
+                  span.extra  (or click here)
+                div.upload-image
+                  img(src="img/upload.svg", class="img-upload")
+                div.dz-message
+                  span.note
+                    Please only drag HTML emails that have the class of
+                      code .backgroundTable
+                div.download-ready
+                  span.icon-download
+                  span File downloading
           p.status status:
             span.small  !{status}
-      include snippet/footer.jade
+    include snippet/footer.jade
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js")
