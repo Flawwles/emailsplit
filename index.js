@@ -11,7 +11,7 @@
 	var errors = false;
 	var className = '.backgroundTable';
 	var app = express();
-
+	var sass = require('node-sass');
 
 	var storage = multer.diskStorage({
 		destination: function(req, file, callback) {
@@ -53,6 +53,7 @@
 
 
 	app.use(express.static(__dirname + '/public'));
+	app.use(express.static(__dirname + '/logs'));
 
 	app.post('/api/upload', function(req, res) {
 		upload(req, res, function(err) {

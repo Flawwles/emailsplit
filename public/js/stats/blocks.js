@@ -35,7 +35,7 @@ $(function() {
 			data: []
 		}]
 	});
-	$.getJSON('http://localhost:3000/logs/log.json', function(stats) {
+	$.getJSON('/logs/log.json', function(stats) {
 		myChart.series[0].setData(stats.data);
     scripRun.innerHTML = stats.data.length;
     avgNumber.innerHTML = createAverage(stats.data);
