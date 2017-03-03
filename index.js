@@ -61,9 +61,9 @@
 				return res.end("Error uploading file");
 			}
 			var clean = require('./src/clean');
+			var validate = require('./src/validate');
 			var splitter = require('./src/splitter');
 			var renderer = require('./src/renderer');
-			var validate = require('./src/validate');
 			var zip = require('./src/zip');
 			var fileName = req.file.path;
 			var fileNameShort = req.file.originalname;
