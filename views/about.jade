@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Splitscript - About
+    link(href='https://fonts.googleapis.com/css?family=Roboto:100,400,900', rel='stylesheet')
+    link(href='/css/main.css', rel='stylesheet')
+  body
+    include snippet/header.jade
+    main
+      div.container
+        div.row
+        div.dropzone-container
+          div.dropzone-content
+            h2.test About
+            p Built by Matt Evans
+            ul
+              li npm -v :3.8.6
+              li node -v :5.12.0
+
+    include snippet/footer.jade
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")

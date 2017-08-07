@@ -12,6 +12,7 @@
 	var className = '.backgroundTable';
 	var app = express();
 	var sass = require('node-sass');
+	var firebase = require("firebase");
 
 	var storage = multer.diskStorage({
 		destination: function(req, file, callback) {
@@ -39,7 +40,7 @@
 	});
 	//About
 		app.get('/about', function(req, res) {
-			res.render('stats', {
+			res.render('about', {
 				status: 'waiting for file'
 			});
 		});
@@ -94,6 +95,9 @@
 		});
 	});
 
+
+
+	// console.log(firebase)
 	app.listen(3000, function() {
 		console.log("Working on port 3000");
 	});

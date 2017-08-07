@@ -27,7 +27,12 @@ h2 {
   font-weight: 400;
 }
 
-
+.logo {
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
+  padding: 24px;
+}
 .dropzone-content {
 
 width: 100%;
@@ -223,6 +228,10 @@ margin-top: 20px;
   margin-right: 35px;
   text-decoration: none;
   color: #999;
+}
+
+.navbar-item:last-child > a {
+  margin: 0;
 }
 
 .container {
