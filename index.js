@@ -43,14 +43,6 @@
 				status: 'waiting for file'
 			});
 		});
-		///PUT THE JSON LOG AS AN ENDPOINT WHEN I GET TIME
-		// app.get('/log', function(req, res) {
-		// 	// res.sendFile(path.normalize(__dirname + '/foo.json'))
-		// 	res.render('stats', {
-		// 		status: 'waiting for file'
-		// 	});
-		// });
-
 
 	app.use(express.static(__dirname + '/public'));
 	app.use(express.static(__dirname + '/logs'));
