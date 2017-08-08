@@ -12,7 +12,6 @@
 	var className = '.backgroundTable';
 	var app = express();
 	var sass = require('node-sass');
-	var firebase = require("firebase");
 
 	var storage = multer.diskStorage({
 		destination: function(req, file, callback) {
