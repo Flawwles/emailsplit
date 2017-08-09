@@ -78,7 +78,7 @@ padding-top: 31px;
 
 .dropzone .dz-preview.dz-file-preview .dz-image {
   background: transparent;
-  content: url(http://localhost:3000/img/html-icon.svg);
+  content: url(..//img/html-icon.svg);
   width: 39px;
   margin-left: 34px;
 }
@@ -101,7 +101,7 @@ padding-top: 31px;
     left: 459px;
     top: 60px;
     width: 31px;
-    content: url(http://localhost:3000/img/tick.svg);
+    content: url(..//img/tick.svg);
 }
 
 .dropzone .dz-complete .dz-progress {
@@ -177,7 +177,7 @@ margin-top: 20px;
 }
 
 .icon-download {
-  content: url(http://localhost:3000/img/download.svg);
+  content: url(../img/download.svg);
   position: relative;
   width: 30px;
   top: 3px;
