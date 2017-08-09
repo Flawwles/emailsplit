@@ -631,7 +631,7 @@ img {
 
 .dropzone .dz-preview.dz-file-preview .dz-image {
   background: transparent;
-  content: url(../img/html-icon.svg);
+  content: url(..//img/html-icon.svg);
   width: 39px;
   margin-left: 34px; }
 
@@ -651,7 +651,7 @@ img {
   left: 459px;
   top: 60px;
   width: 31px;
-  content: url(../img/tick.svg); }
+  content: url(..//img/tick.svg); }
 
 .dropzone .dz-complete .dz-progress {
   display: none; }
