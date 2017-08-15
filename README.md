@@ -3,6 +3,9 @@ HTML (email) file, split into chunks around the `table` with the class of `backg
 
 ![emailsplit](/split-script-low.gif)
 
+## Hosted version
+https://splitscript.herokuapp.com/
+
 
 ## Development
 
