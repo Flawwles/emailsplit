@@ -1,25 +1,27 @@
-# emailsplit
-Input a HTML email that has multiple tables holding smaller sections - The script
-will take each table and all the HTML within and create a new HTML file for each block.
-Every block will then be processed to have a screenshot taken, making it easier to
-add to a template sorter.
+# Emailsplit
+HTML (email) file, split into chunks around the `table` with the class of `backgroundTable` each block saved as a new HTML file and a screenshot of each generated
 
-![emailsplit](http://matt-evans.co.uk/wp-content/uploads/2016/12/emailsplit.gif)
+![emailsplit](http://matt-evans.co.uk/temp/2017/07/split-script.gif)
 
 ## Development
 
-1. Run `npm install` to install dependencies
+1. First run `npm install` to install dependencies
 
-2. You need PhantomJS installed `npm install -g phantomjs` || Currently working with PhantomJS 2.1.1
-
-3. Run `npm link` to add `emailsplit` as a global command
+2. Run `npm start` to start the server - Which opens on port `3000` by default (try removed `process.env.PORT` in app.listen if server doesn't run locally)
 
 
 ## Usage
 
-1. CD into the folder container the HTML file you wish to split
+1. Drag a HTML file onto the page
 
-2. Run the command `emailsplit <HTML FILENAME> <CLASSNAME>`
+2. Make sure it has the class of `backgroundTable` on the outer block that you want to split at
 
-3. A new folder called export will be created containing the HTML and PNG files
-with the contents of each element with the class inputted
+3. Wait for the script to process then a zip file will download
+
+## Notes
+
+I'm not a dev, this is my first node project so I'm sure there are bugs.
+
+The output folder gives you a file named `block-$` and `image-$`
+
+Images are cropped to 600px as this is the size I needed them but you can change this in the `src/renderer.js` file
