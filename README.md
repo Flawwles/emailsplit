@@ -1,7 +1,7 @@
 # Emailsplit
 HTML (email) file, split into chunks around the `table` with the class of `backgroundTable` each block saved as a new HTML file and a screenshot of each generated
 
-![emailsplit](http://matt-evans.co.uk/temp/2017/07/split-script.gif)
+![emailsplit](http://matt-evans.co.uk/temp/2017/07/split-script-low.gif)
 
 ## Development
 
