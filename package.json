@@ -5,11 +5,11 @@
   "author": "Matthew Evans",
   "scripts": {
     "test": "echo \"Error: no test specified \" && exit 1",
-    "start": "nodemon -e scss,js,jade -x \"npm run build-css && node index.js\"",
+    "start": "node index.js",
     "build-css": "./bin/build-css"
   },
   "engines": {
-    "node": "5.12.0"
+    "node": "8.2.1"
   },
   "dependencies": {
     "async": "^1.4.2",
