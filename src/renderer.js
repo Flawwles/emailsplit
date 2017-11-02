@@ -10,21 +10,15 @@
 		do: function(callback) {
 			glob("./export/blocks/*.html", {}, function(er, files) {
 				(async () => {
-					const browser = await puppeteer.launch({headless: true});
-
+					const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 					const page = await browser.newPage();
           page._emulationManager._client.send(
             'Emulation.setDefaultBackgroundColorOverride',
             { color: { r: 0, g: 0, b: 0, a: 0 } }
           );
-
-
-
-
           var customSort = function (a, b) {
             return (Number(a.match(/(\d+)/g)[0]) - Number((b.match(/(\d+)/g)[0])));
           }
-
           const sortedFiles = files.sort(customSort);
           for (let i=0; i < sortedFiles.length; i++) {
             let file = sortedFiles[i];
@@ -53,15 +47,8 @@
               }
             });
           }
-
           await screenshotDOMElement('.backgroundTable', 16);
-
-            // await page.screenshot(
-            //   {path: "./export/images/image-" + customNumber + ".png"},
-            //   {omitBackground: true}
-            // );
           }
-
 					await browser.close();
           await logData(files.length)
           await callback();
