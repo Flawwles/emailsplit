@@ -51,6 +51,7 @@
 		upload(req, res, function(err) {
 			if (err) {
 				return res.end("Error uploading file");
+				console.log(err);
 			}
 			var clean = require('./src/clean');
 			var validate = require('./src/validate');

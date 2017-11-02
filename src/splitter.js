@@ -12,7 +12,7 @@
       var $ = cheerio.load(content);
       $(className).each(function(index, el) {
         var indexPlus = index + 1;
-        var fileName = './export/blocks/block-' + indexPlus + '.html';
+        var fileName = 'export/blocks/block-' + indexPlus + '.html';
         var content = $.html(el);
         self.saveToFile(fileName, content);
       });
