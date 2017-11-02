@@ -8,7 +8,7 @@
     },
     set: function(content) {
       fs.writeFileSync('./public/logs/log.json', JSON.stringify(content));
-      console.log("SET");
+      console.log("Set new chart data");
     }
   }
 })();

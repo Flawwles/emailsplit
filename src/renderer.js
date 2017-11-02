@@ -1,50 +1,58 @@
 (function() {
-  'use strict';
+	'use strict';
+	const puppeteer = require('puppeteer');
+	var fs = require('fs'),
+		glob = require('glob'),
+		// phantom = require("phantom"),
+		getJSON = require('./getJSON'),
+		logFile = {};
+	module.exports = {
+		do: function(callback) {
+			glob("./export/blocks/*.html", {}, function(er, files) {
+				(async () => {
+					const browser = await puppeteer.launch({headless: true});
 
-  var fs = require('fs'),
-    glob = require('glob'),
-    phantom = require("phantom"),
-    getJSON = require('./getJSON'),
-    logFile = {};
+					const page = await browser.newPage();
+          page._emulationManager._client.send(
+            'Emulation.setDefaultBackgroundColorOverride',
+            { color: { r: 0, g: 0, b: 0, a: 0 } }
+          );
 
 
 
-  module.exports = {
-    do : function(callback) {
-      console.log("Loading PhantomJS || Please wait || ...      ");
-      glob("./export/blocks/*.html", {}, function(er, files) {
-        //  var pace = require('awesome-progress')({total: files.length, finishMessage: "Message split"});
-         var promises = files.map(function(file, i) {
-          return phantom.create().then(function(ph) {
-            return ph.createPage().then(function(page) {
-              var fileNumber = i + 1;
-              return page.open("./export/blocks/block-" + fileNumber + ".html").then(function(status) {
-                page.property('viewportSize', { width: 600, height: 20 });
-                page.render("./export/images/image-" + fileNumber + ".png", {
-                  format: 'png',
-                  quality: '100'
-                });
-                // pace.op();
-                page.close();
-                ph.exit();
-              });
-            });
-          });
-        });
 
-        console.log('promises', promises);
+          var customSort = function (a, b) {
+            return (Number(a.match(/(\d+)/g)[0]) - Number((b.match(/(\d+)/g)[0])));
+          }
 
-        Promise.all(promises).then(function (results) {
-          // console.log('results', results);
-          console.log("blocks: ", results.length);
-          logFile = getJSON.get();
-          logFile.data.push(results.length)
-          getJSON.set(logFile);
-          setTimeout(function(){ callback(); }, 3000);
+          const sortedFiles = files.sort(customSort);
+          for (let i=0; i < sortedFiles.length; i++) {
+            let file = sortedFiles[i];
+            var fullPath = __dirname;
+  					const customPath = fullPath.substring(0, fullPath.length - 3);
+  					const customFile = file.substring(2);
+            let customNumber = i + 1;
+  					let fileToOpen = "file://" + customPath + customFile;
+            console.log(fileToOpen);
+            await page.goto(fileToOpen);
+            await page.screenshot(
+              {path: "./export/images/image-" + customNumber + ".png"},
+              {omitBackground: true}
+            );
+          }
 
-        });
-      });
-    }
+					await browser.close();
+          await logData(files.length)
+          await callback();
+				})();
 
-  }
+				function logData(data) {
+					logFile = getJSON.get();
+					logFile.data.push(data)
+					getJSON.set(logFile);
+					callback();
+				}
+			});
+		}
+	}
 })();
